@@ -8,6 +8,7 @@ Photo Gallery Manager to aplikacja internetowa umożliwiająca efektywne zarząd
 - [Funkcjonalności](#funkcjonalności)
 - [Technologie](#technologie)
 - [Architektura systemu](#architektura-systemu)
+- [Struktura folderów i plików](#struktura-folderów-i-plików)
 - [API Endpoints](#api-endpoints)
 - [Instalacja i uruchomienie](#instalacja-i-uruchomienie)
 - [Role użytkowników](#role-użytkowników)
@@ -58,6 +59,163 @@ System wykorzystuje architekturę warstwową:
 ### Diagram klas
 
 [Patrz diagram klas w pliku class-diagram.md]
+
+## Struktura folderów i plików
+
+```
+photo-gallery-manager/
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/
+│   │   │       └── photogallery/
+│   │   │           ├── PhotoGalleryManagerApplication.java
+│   │   │           ├── config/
+│   │   │           │   ├── SecurityConfig.java
+│   │   │           │   ├── JwtConfig.java
+│   │   │           │   └── SwaggerConfig.java
+│   │   │           ├── controller/
+│   │   │           │   ├── UserController.java
+│   │   │           │   ├── ImageController.java
+│   │   │           │   ├── GalleryController.java
+│   │   │           │   ├── TagController.java
+│   │   │           │   ├── CommentController.java
+│   │   │           │   ├── RatingController.java
+│   │   │           │   ├── NotificationController.java
+│   │   │           │   └── TrendAnalysisController.java
+│   │   │           ├── dto/
+│   │   │           │   ├── request/
+│   │   │           │   │   ├── UserRequest.java
+│   │   │           │   │   ├── ImageRequest.java
+│   │   │           │   │   ├── GalleryRequest.java
+│   │   │           │   │   ├── TagRequest.java
+│   │   │           │   │   ├── CommentRequest.java
+│   │   │           │   │   ├── RatingRequest.java
+│   │   │           │   │   └── TrendAnalysisRequest.java
+│   │   │           │   └── response/
+│   │   │           │       ├── UserResponse.java
+│   │   │           │       ├── ImageResponse.java
+│   │   │           │       ├── GalleryResponse.java
+│   │   │           │       ├── TagResponse.java
+│   │   │           │       ├── CommentResponse.java
+│   │   │           │       ├── RatingResponse.java
+│   │   │           │       ├── NotificationResponse.java
+│   │   │           │       └── TrendAnalysisResponse.java
+│   │   │           ├── entity/
+│   │   │           │   ├── User.java
+│   │   │           │   ├── UserRole.java
+│   │   │           │   ├── Image.java
+│   │   │           │   ├── Tag.java
+│   │   │           │   ├── ImageTag.java
+│   │   │           │   ├── Gallery.java
+│   │   │           │   ├── GalleryImage.java
+│   │   │           │   ├── Comment.java
+│   │   │           │   ├── Rating.java
+│   │   │           │   ├── Notification.java
+│   │   │           │   ├── NotificationType.java
+│   │   │           │   ├── TrendAnalysis.java
+│   │   │           │   └── TrendType.java
+│   │   │           ├── repository/
+│   │   │           │   ├── UserRepository.java
+│   │   │           │   ├── ImageRepository.java
+│   │   │           │   ├── TagRepository.java
+│   │   │           │   ├── ImageTagRepository.java
+│   │   │           │   ├── GalleryRepository.java
+│   │   │           │   ├── GalleryImageRepository.java
+│   │   │           │   ├── CommentRepository.java
+│   │   │           │   ├── RatingRepository.java
+│   │   │           │   ├── NotificationRepository.java
+│   │   │           │   └── TrendAnalysisRepository.java
+│   │   │           ├── service/
+│   │   │           │   ├── UserService.java
+│   │   │           │   ├── ImageService.java
+│   │   │           │   ├── GalleryService.java
+│   │   │           │   ├── TagService.java
+│   │   │           │   ├── CommentService.java
+│   │   │           │   ├── RatingService.java
+│   │   │           │   ├── NotificationService.java
+│   │   │           │   ├── TrendAnalysisService.java
+│   │   │           │   ├── StorageService.java
+│   │   │           │   └── SecurityService.java
+│   │   │           ├── service/impl/
+│   │   │           │   ├── UserServiceImpl.java
+│   │   │           │   ├── ImageServiceImpl.java
+│   │   │           │   ├── GalleryServiceImpl.java
+│   │   │           │   ├── TagServiceImpl.java
+│   │   │           │   ├── CommentServiceImpl.java
+│   │   │           │   ├── RatingServiceImpl.java
+│   │   │           │   ├── NotificationServiceImpl.java
+│   │   │           │   ├── TrendAnalysisServiceImpl.java
+│   │   │           │   ├── StorageServiceImpl.java
+│   │   │           │   └── SecurityServiceImpl.java
+│   │   │           ├── exception/
+│   │   │           │   ├── GlobalExceptionHandler.java
+│   │   │           │   ├── ResourceNotFoundException.java
+│   │   │           │   ├── UnauthorizedException.java
+│   │   │           │   ├── BadRequestException.java
+│   │   │           │   └── StorageException.java
+│   │   │           ├── security/
+│   │   │           │   ├── JwtTokenProvider.java
+│   │   │           │   ├── JwtAuthenticationFilter.java
+│   │   │           │   ├── UserDetailsServiceImpl.java
+│   │   │           │   └── JwtAuthenticationEntryPoint.java
+│   │   │           ├── util/
+│   │   │           │   ├── ImageUtil.java
+│   │   │           │   ├── DateUtil.java
+│   │   │           │   └── ValidationUtil.java
+│   │   │           └── analytics/
+│   │   │               ├── TagAnalytics.java
+│   │   │               ├── UploadAnalytics.java
+│   │   │               ├── UserActivityAnalytics.java
+│   │   │               └── PopularityAnalytics.java
+│   │   └── resources/
+│   │       ├── application.properties
+│   │       ├── application-dev.properties
+│   │       ├── application-prod.properties
+│   │       ├── db/
+│   │       │   └── migration/
+│   │       │       ├── V1__init_schema.sql
+│   │       │       └── V2__add_indexes.sql
+│   │       └── static/
+│   │           └── uploads/
+│   │               └── .gitkeep
+│   └── test/
+│       └── java/
+│           └── com/
+│               └── photogallery/
+│                   ├── controller/
+│                   │   ├── UserControllerTest.java
+│                   │   ├── ImageControllerTest.java
+│                   │   └── ...
+│                   ├── service/
+│                   │   ├── UserServiceTest.java
+│                   │   ├── ImageServiceTest.java
+│                   │   └── ...
+│                   └── repository/
+│                       ├── UserRepositoryTest.java
+│                       ├── ImageRepositoryTest.java
+│                       └── ...
+├── pom.xml
+├── .gitignore
+├── Dockerfile
+├── docker-compose.yml
+└── README.md
+```
+
+Struktura projektu jest zorganizowana zgodnie z najlepszymi praktykami dla aplikacji Spring Boot:
+
+- **config/**: Zawiera klasy konfiguracyjne dla Spring Security, JWT i Swagger
+- **controller/**: Zawiera kontrolery REST API dla wszystkich funkcjonalności
+- **dto/**: Obiekty transferu danych (Data Transfer Objects) używane do komunikacji z klientem
+- **entity/**: Encje JPA reprezentujące tabele w bazie danych
+- **repository/**: Interfejsy do komunikacji z bazą danych, wykorzystujące Spring Data JPA
+- **service/**: Interfejsy usługowe definiujące logikę biznesową
+- **service/impl/**: Implementacje interfejsów usługowych
+- **exception/**: Niestandardowe klasy wyjątków i globalny handler wyjątków
+- **security/**: Klasy związane z zabezpieczeniami i autentykacją JWT
+- **util/**: Klasy narzędziowe pomocne w różnych częściach aplikacji
+- **analytics/**: Klasy odpowiedzialne za analizę trendów i generowanie raportów
+- **resources/**: Pliki konfiguracyjne, migracje bazy danych i zasoby statyczne
 
 ## API Endpoints
 
